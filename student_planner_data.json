@@ -1,0 +1,29 @@
+{
+    "users": {
+        "Samanthi": "1234",
+        "Keshika Perera": "Kesh123",
+        "Keshika": "Kesh@123"
+    },
+    "tasks": [
+        {
+            "id": "1",
+            "user": "Keshika",
+            "title": "Studying",
+            "module": "02",
+            "due_date": "2026-06-06",
+            "priority": "Medium",
+            "notes": "",
+            "completed": false
+        },
+        {
+            "id": "2",
+            "user": "Keshika",
+            "title": "Dancing Competition",
+            "module": "03",
+            "due_date": "2026-06-25",
+            "priority": "Medium",
+            "notes": "",
+            "completed": true
+        }
+    ]
+}

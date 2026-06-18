@@ -1,0 +1,67 @@
+<LoginScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.12, 0.14, 0.22, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: [30, 50, 30, 40]
+        spacing: 18
+
+        Label:
+            text: "Smart Student Planner"
+            font_size: 28
+            bold: True
+            size_hint_y: None
+            height: 50
+
+        TextInput:
+            id: username_input
+            hint_text: "Username"
+            multiline: False
+            font_size: 16
+            size_hint_y: None
+            height: 48
+            background_color: 0.18, 0.20, 0.30, 1
+            foreground_color: 1, 1, 1, 1
+
+        TextInput:
+            id: password_input
+            hint_text: "Password"
+            password: True
+            multiline: False
+            font_size: 16
+            size_hint_y: None
+            height: 48
+            background_color: 0.18, 0.20, 0.30, 1
+            foreground_color: 1, 1, 1, 1
+
+        Label:
+            id: message_label
+            text: ""
+            font_size: 13
+            color: 0.9, 0.3, 0.3, 1
+            size_hint_y: None
+            height: 25
+
+        Button:
+            text: "Sign In"
+            font_size: 16
+            bold: True
+            size_hint_y: None
+            height: 48
+            background_normal: ""
+            background_color: 0.25, 0.45, 0.85, 1
+            on_release: root.do_login()
+
+        Button:
+            text: "Create New Student Account ➔"
+            font_size: 14
+            size_hint_y: None
+            height: 40
+            background_normal: ""
+            background_color: 0.18, 0.20, 0.30, 1
+            on_release: root.go_to_register()

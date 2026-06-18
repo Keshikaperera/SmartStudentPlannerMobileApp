@@ -1,0 +1,90 @@
+<HomeScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.12, 0.14, 0.22, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 25
+        spacing: 18
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: 40
+            Widget:
+                size_hint_x: 0.7
+            Button:
+                text: "Logout ↩"
+                size_hint_x: 0.3
+                background_color: 0.7, 0.2, 0.2, 1
+                on_release: root.logout()
+
+        Label:
+            id: welcome_label
+            text: "Welcome!"
+            font_size: 24
+            bold: True
+            size_hint_y: None
+            height: 35
+
+        # Reminder Notification Alert Banner Card Component
+        BoxLayout:
+            id: reminder_box
+            orientation: "vertical"
+            padding: 12
+            size_hint_y: None
+            height: 90
+            opacity: 0
+            canvas.before:
+                Color:
+                    rgba: 0.75, 0.25, 0.25, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [6]
+            Label:
+                text: "🔔 URGENT ACADEMIC REMINDERS:"
+                bold: True
+                font_size: 13
+                size_hint_y: 0.3
+            Label:
+                id: reminder_text
+                text: ""
+                font_size: 12
+                size_hint_y: 0.7
+
+        # Dashboard Analytics Metrics Overview Card Component
+        BoxLayout:
+            orientation: "vertical"
+            padding: 15
+            size_hint_y: None
+            height: 80
+            canvas.before:
+                Color:
+                    rgba: 0.18, 0.20, 0.30, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [6]
+            Label:
+                id: metrics_label
+                text: "Pending Tasks: 0  |  Completed: 0"
+                bold: True
+                color: 0.3, 0.7, 0.9, 1
+
+        Widget:
+            size_hint_y: 1
+
+        Button:
+            text: "Launch Workspace Planner"
+            font_size: 16
+            bold: True
+            size_hint_y: None
+            height: 52
+            background_normal: ""
+            background_color: 0.25, 0.65, 0.45, 1
+            on_release: root.manager.current = "profile"

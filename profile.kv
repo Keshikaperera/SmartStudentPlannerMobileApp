@@ -1,0 +1,149 @@
+<TaskManagerScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.12, 0.14, 0.22, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: [12, 12, 12, 12]
+        spacing: 10
+
+        # Header Bar Block Section Component
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: 35
+            spacing: 10
+            Button:
+                text: "⏮ Dashboard"
+                size_hint_x: 0.35
+                on_release: root.go_back()
+            Label:
+                text: "Task Engine & Calendar"
+                bold: True
+                font_size: 16
+                size_hint_x: 0.65
+                halign: "right"
+
+        # Embedded Calendar Matrix Module Layout UI Card Component
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: 210
+            padding: 8
+            canvas.before:
+                Color:
+                    rgba: 0.16, 0.18, 0.26, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [6]
+
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: 30
+                Button:
+                    text: "<"
+                    size_hint_x: 0.2
+                    on_release: root.change_month(-1)
+                Label:
+                    id: calendar_header
+                    text: "Month Year"
+                    bold: True
+                    size_hint_x: 0.6
+                Button:
+                    text: ">"
+                    size_hint_x: 0.2
+                    on_release: root.change_month(1)
+
+            GridLayout:
+                id: calendar_grid
+                cols: 7
+                spacing: 3
+
+        TextInput:
+            id: search_bar
+            hint_text: "🔎 Filter tasks by text or click calendar date..."
+            multiline: False
+            size_hint_y: None
+            height: 38
+            background_color: 0.18, 0.20, 0.30, 1
+            foreground_color: 1, 1, 1, 1
+            on_text: root.refresh_task_list(self.text)
+
+        ScrollView:
+            size_hint_y: 0.3
+            canvas.before:
+                Color:
+                    rgba: 0.08, 0.10, 0.16, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            BoxLayout:
+                id: tasks_container
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 4
+
+        # Task Creation/Update Input Fields Block Form Component
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 5
+            size_hint_y: None
+            height: 160
+            padding: 8
+            canvas.before:
+                Color:
+                    rgba: 0.18, 0.20, 0.30, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [6]
+
+            TextInput:
+                id: task_title
+                hint_text: "Task Title"
+                multiline: False
+            BoxLayout:
+                orientation: "horizontal"
+                spacing: 8
+                TextInput:
+                    id: task_module
+                    hint_text: "Module Code"
+                TextInput:
+                    id: task_due
+                    hint_text: "Due (YYYY-MM-DD)"
+            BoxLayout:
+                orientation: "horizontal"
+                Label:
+                    text: "Priority Level:"
+                    font_size: 11
+                TextInput:
+                    id: task_priority
+                    text: "Medium"
+            TextInput:
+                id: task_notes
+                hint_text: "Notes details..."
+
+        Label:
+            id: error_feedback
+            text: ""
+            font_size: 12
+            color: 0.9, 0.6, 0.2, 1
+            size_hint_y: None
+            height: 18
+
+        Button:
+            id: btn_submit_task
+            text: "Add Task Record"
+            bold: True
+            size_hint_y: None
+            height: 42
+            background_normal: ""
+            background_color: 0.25, 0.45, 0.85, 1
+            on_release: root.add_task()
